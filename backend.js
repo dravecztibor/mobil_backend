@@ -121,6 +121,18 @@ kapcsolat()
 //képfeltöltés vége----------------------
 
 
+app.post('/keresetelszoveg', (req, res) => {
+  kapcsolat()
+
+  connection.query(`SELECT * FROM etelek WHERE etelek_nev like "%${req.body.bevitel1}%"`, (err, rows, fields) => {
+    if (err) throw err
+
+    console.log(rows)
+    res.send(rows)
+  })
+connection.end() 
+})
+
 
 
 
