@@ -98,7 +98,7 @@ app.post('/api/upload', upload.array('photo', 3), (req, res) => {
 //adatb-be való felvitel-----------------
 kapcsolat()
   
-  connection.query(`INSERT INTO etelek VALUES (NULL, '${req.body.bevitel1}', 4, '${req.files[0].filename}')`, (err, rows, fields) => {
+  connection.query(`INSERT INTO etelek VALUES (NULL, '${req.body.bevitel1}', ${req.body.bevitel2}, '${req.files[0].filename}', '${req.body.bevitel3}', '${req.body.bevitel4}', '${req.body.bevitel5}')`, (err, rows, fields) => {
   if (err){
     console.log("Hiba")
     res.send("Hiba")
