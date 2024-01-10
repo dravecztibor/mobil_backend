@@ -98,7 +98,7 @@ app.post('/api/upload', upload.array('photo', 3), (req, res) => {
 //adatb-be való felvitel-----------------
 kapcsolat()
   
-  connection.query(`INSERT INTO etelek VALUES (NULL, '${req.body.bevitel1}', ${req.body.bevitel2}, '${req.files[0].filename}', '${req.body.bevitel3}', '${req.body.bevitel4}', '${req.body.bevitel5}')`, (err, rows, fields) => {
+  connection.query(`INSERT INTO etelek VALUES (NULL, '${req.body.bevitel1}', ${req.body.bevitel2}, '${req.files[0].filename}', '${req.body.bevitel3}', '${req.body.bevitel4}', '${req.body.bevitel5}', '')`, (err, rows, fields) => {
   if (err){
     console.log("Hiba")
     res.send("Hiba")
@@ -125,6 +125,18 @@ app.post('/keresetelszoveg', (req, res) => {
   kapcsolat()
 
   connection.query(`SELECT * FROM etelek WHERE etelek_nev like "%${req.body.bevitel1}%"`, (err, rows, fields) => {
+    if (err) throw err
+
+    console.log(rows)
+    res.send(rows)
+  })
+connection.end() 
+})
+
+app.post('/kereseteltipus', (req, res) => {
+  kapcsolat()
+
+  connection.query(`SELECT * FROM etelek WHERE etelek_tipus = ${req.body.bevitel2}`, (err, rows, fields) => {
     if (err) throw err
 
     console.log(rows)
