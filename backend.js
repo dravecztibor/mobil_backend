@@ -25,9 +25,9 @@ function kapcsolat(){
 }
 
 
-/*app.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hello World!')
-})*/
+})
 
 
 app.get('/etelek', (req, res) => {
