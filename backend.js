@@ -10,7 +10,7 @@ const port = 3000
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json());
-app.use(express.static('etelkepek'))
+app.use(express.static('kepek'))
 
 
 var connection
@@ -83,7 +83,7 @@ app.get('/eteltipusok', (req, res) => {
 //képfelöltés----------------------------
 const storage = multer.diskStorage({
   destination(req, file, callback) {
-    callback(null, './etelkepek');
+    callback(null, './kepek');
   },
   filename(req, file, callback) {
     callback(null, `${file.fieldname}_${Date.now()}_${file.originalname}`);
